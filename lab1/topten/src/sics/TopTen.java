@@ -46,6 +46,10 @@ public class TopTen {
 
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+            /*
+             * The xml transform is taken from the book
+             * MapReduce Design Patterns: Building Effective Algorithms and Analytics for Hadoop and Other Systems
+             */
             Map<String, String> parsed = MRDPUtils.transformXmlToMap(value.toString());
             if (parsed.containsKey("Reputation") && parsed.containsKey("AccountId")) {
                 String userId = parsed.get("AccountId");
